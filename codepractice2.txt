@@ -1,0 +1,116 @@
+
+Coding practice 2
+1.Get all the details of products that belong to "clothing" category and price less than 700.
+
+mysql> select * from shopping where category='clothing' and price<700;
++------+----------+-------+-------+--------+
+| name | category | price | brand | rating |
++------+----------+-------+-------+--------+
+| hary | clothing |   300 | Puma  |    4.8 |
++------+----------+-------+-------+--------+
+
+2.Get all the details of products that belong to"denim" with rating greater than 4.
+
+mysql> select * from shopping where name like '%denim%' and rating>4;
++---------------+----------+-------+-------+--------+
+| name          | category | price | brand | rating |
++---------------+----------+-------+-------+--------+
+| Joggers Denim | Pant     |   800 | levis |    4.1 |
+| denim shirt   | shirt    |   700 | cpbro |    4.3 |
+| denim Jacket  | jacket   |  1200 | puma  |    4.7 |
++---------------+----------+-------+-------+--------+
+
+3.Get all the Best rated product with price less than or equal to 1000.
+
+mysql> select * from shopping where price<=1000 and review='best product';
++---------------+----------+-------+-------+--------+--------------+
+| name          | category | price | brand | rating | review       |
++---------------+----------+-------+-------+--------+--------------+
+| Joggers Denim | Pant     |   800 | levis |    4.1 | Best product |
+| denim shirt   | shirt    |   700 | cpbro |    4.3 | Best product |
+| Sports shoe   | Shoes    |   800 | levis |    4.1 | Best product |
+| Shorts        | Clothing |   700 | cpbro |    4.3 | Best product |
++---------------+----------+-------+-------+--------+--------------+
+
+
+4.Get all the products from the product table whose
+rating is above 3.6 and
+price is less than 1000 and
+belongs to "puma" brand
+
+
+mysql> select * from shopping where rating>3.6 and price<1000 and brand='puma';
++-------------+----------+-------+-------+--------+--------+
+| name        | category | price | brand | rating | review |
++-------------+----------+-------+-------+--------+--------+
+| Black Shirt | clothing |   900 | Puma  |    4.8 | NULL   |
+| tracks      | clothing |   900 | Puma  |    4.8 | NULL   |
+| hary        | clothing |   300 | Puma  |    4.8 | NULL   |
++-------------+----------+-------+-------+--------+--------+
+
+
+5.Get all the products from "puma","Denim" or "Nike" brands.
+
+mysql> select * from shopping where brand in ('Puma','Nike');
++--------------+----------+-------+-------+--------+--------------+
+| name         | category | price | brand | rating | review       |
++--------------+----------+-------+-------+--------+--------------+
+| Black Shirt  | clothing |   900 | Puma  |    4.8 | NULL         |
+| black jeans  | clothing |  1100 | Nike  |    4.3 | NULL         |
+| tracks       | clothing |   900 | Puma  |    4.8 | NULL         |
+| tshirt       | clothing |  1100 | Nike  |    4.2 | NULL         |
+| hary         | clothing |   300 | Puma  |    4.8 | NULL         |
+| denim Jacket | jacket   |  1200 | puma  |    4.7 | NULL         |
+| denim Jacket | jacket   |  1200 | puma  |    4.7 | Best product |
+| T shirt      | clothing |  1200 | puma  |    4.7 | Best product |
++--------------+----------+-------+-------+--------+--------------+
+
+6.Get all the ddetails of products whose
+brand is "Zara" with rating greater than 4 or
+product that belong to "Fila" brand.
+
+mysql> select * from shopping where brand like '%zara%'and rating>4 or brand like '%fila%';
++------------+----------+-------+-------+--------+--------+
+| name       | category | price | brand | rating | review |
++------------+----------+-------+-------+--------+--------+
+| Grey jeans | clothing |   800 | Fila  |    4.2 | NULL   |
+| shirt      | clothing |   800 | zara  |    4.2 | NULL   |
++------------+----------+-------+-------+--------+--------+
+
+8.Get the details of the products from the product tables
+brand is "Puma" and rating greater than 3.5 or
+brand is "Addidas" and rating greater than 4.0
+
+mysql> select * from shopping where brand like '%puma%'and rating>3.5 or brand like '%adidas%'and rating>4;
++--------------+----------+-------+--------+--------+--------------+
+| name         | category | price | brand  | rating | review       |
++--------------+----------+-------+--------+--------+--------------+
+| Black Shirt  | clothing |   900 | Puma   |    4.8 | NULL         |
+| black shoe   | shoes    |   700 | Adidas |    4.6 | NULL         |
+| tracks       | clothing |   900 | Puma   |    4.8 | NULL         |
+| shoe         | shoes    |   700 | Adidas |    4.6 | NULL         |
+| hary         | clothing |   300 | Puma   |    4.8 | NULL         |
+| denim Jacket | jacket   |  1200 | puma   |    4.7 | NULL         |
+| denim Jacket | jacket   |  1200 | puma   |    4.7 | Best product |
+| T shirt      | clothing |  1200 | puma   |    4.7 | Best product |
++--------------+----------+-------+--------+--------+--------------+
+
+
+
+9.Get all the shirts available in "puma", "nike" or "Levis" brands,excluding the colour shirts
+
+mysql> select * from shopping where brand in ('puma','nike','levis') and name<>'black shirt';
++---------------+----------+-------+-------+--------+--------------+
+| name          | category | price | brand | rating | review       |
++---------------+----------+-------+-------+--------+--------------+
+| black jeans   | clothing |  1100 | Nike  |    4.3 | NULL         |
+| tracks        | clothing |   900 | Puma  |    4.8 | NULL         |
+| tshirt        | clothing |  1100 | Nike  |    4.2 | NULL         |
+| hary          | clothing |   300 | Puma  |    4.8 | NULL         |
+| Joggers Denim | Pant     |   800 | levis |    4.1 | NULL         |
+| denim Jacket  | jacket   |  1200 | puma  |    4.7 | NULL         |
+| Joggers Denim | Pant     |   800 | levis |    4.1 | Best product |
+| denim Jacket  | jacket   |  1200 | puma  |    4.7 | Best product |
+| Sports shoe   | Shoes    |   800 | levis |    4.1 | Best product |
+| T shirt       | clothing |  1200 | puma  |    4.7 | Best product |
++---------------+----------+-------+-------+--------+--------------+

@@ -1,0 +1,450 @@
+1.  Write a MongoDB query to display at least 10 details of the documents of  book_id, Btitle, authors in array and price for all the documents in the collection Bookstore. 
+bookdet> db.books.insertOne([{"book_id":1,"btitle":"infinity","author":"hamfield","price":1200}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("641699f1f17dd3b459c4dd6a")
+}
+bookdet> db.books.insertOne([{"book_id":2,"btitle":"stay","author":"bieber","price":800}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a14f17dd3b459c4dd6b")
+bookdet>
+bookdet> db.books.insertOne([{"book_id":3,"btitle":"as it was","author":"emilia","price":800}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a2df17dd3b459c4dd6c")
+}
+bookdet> db.books.insertOne([{"book_id":4,"btitle":"him & i","author":"ruth","price":600}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a4af17dd3b459c4dd6d")
+}
+bookdet> db.books.insertOne([{"book_id":5,"btitle":"closer","author":"chainsmokr","price":1500}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a61f17dd3b459c4dd6e")
+}
+bookdet> db.books.insertOne([{"book_id":6,"btitle":"badguy","author":"billie","price":700}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a78f17dd3b459c4dd6f")
+}
+bookdet> db.books.insertOne([{"book_id":7,"btitle":"livitating","author":"dualipa","price":500}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169a98f17dd3b459c4dd70")
+}
+bookdet> db.books.insertOne([{"book_id":8,"btitle":"panda","author":"lastane","price":1700}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169abff17dd3b459c4dd71")
+}
+bookdet> db.books.insertOne([{"book_id":9,"btitle":"hope","author":"XXX","price":2000}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169ad3f17dd3b459c4dd72")
+}
+bookdet> db.books.insertOne([{"book_id":10,"btitle":"pain","author":"XXX","price":1900}]);
+{
+  acknowledged: true,
+  insertedId: ObjectId("64169aeef17dd3b459c4dd73")
+}
+2. Write a MongoDB query to display the fields Btitle,  authors and price but exclude the bookid for all the documents in the collection Bookstore. 
+
+
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    btitle: 'pain',
+    author: 'XXX',ating',
+    price: 1700alipa',
+  },price: 2000
+  {,
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    btitle: 'pain',6416ac583aa02b518e08bf00"),
+    author: 'XXX',
+    price: 1700mories',
+  },author: 'Animals',
+  { price: 1700
+    _id: ObjectId("6416ab063aa02b518e08bef8"),
+    btitle: 'hope',
+    author: 'XXX',"6416aaab3aa02b518e08bef6"),
+    price: 1500
+  },btitle: 'pain',
+  { author: 'XXX',
+    _id: ObjectId("6416ab853aa02b518e08bef9"),
+    btitle: 'stay',
+    author: 'bieber',
+    price: 1000Id("6416ab063aa02b518e08bef7"),
+  },book_id: 1,
+  { btitle: 'pain',
+    _id: ObjectId("6416ab853aa02b518e08befa"),
+    btitle: 'as it was',
+    author: 'emilia',
+    price: 1500
+  }, "it" for more
+  {kdet>
+    _id: ObjectId("6416abee3aa02b518e08befb"),
+    btitle: 'livitating',
+    author: 'dualipa',
+    price: 2000
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befc"),
+    btitle: 'smile',
+    author: 'XXX',
+    price: 1600
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befd"),
+    btitle: 'him & i',
+    author: 'ruth',
+    price: 900
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befe"),
+    btitle: 'gimmemore',
+    author: 'width',
+    price: 1300
+  }
+]
+
+3. Write a MongoDB query to display the first 3 books based on similar authors.
+
+bookdet> db.books.find({"price":{$gt:1500}})
+[
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    book_id: 1,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befb"),
+    book_id: 5,
+    btitle: 'livitating',
+    author: 'dualipa',
+    price: 2000
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befc"),
+    book_id: 6,
+    btitle: 'smile',
+    author: 'XXX',
+    price: 1600
+  },
+  {
+    _id: ObjectId("6416ac583aa02b518e08bf00"),
+    book_id: 10,
+    btitle: 'memories',
+    author: 'Animals',
+    price: 1700
+  }
+]
+
+5. Write a MongoDB query to find the book title who's price is  more than 800 but less than 2000.
+
+bookdet> db.books.find({"price":{$gt:800,$lt:2000}})
+[
+  {
+    _id: ObjectId("6416aa993aa02b518e08bef5"),
+    book_id: 1,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    book_id: 1,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef8"),
+    book_id: 2,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416ab853aa02b518e08bef9"),
+    book_id: 3,
+    btitle: 'stay',
+    author: 'bieber',
+    price: 1000
+  },
+  {
+    _id: ObjectId("6416ab853aa02b518e08befa"),
+    book_id: 4,
+    btitle: 'as it was',
+    author: 'emilia',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befc"),
+    book_id: 6,
+    btitle: 'smile',
+    author: 'XXX',
+    price: 1600
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befd"),
+    book_id: 7,
+    btitle: 'him & i',
+    author: 'ruth',
+    price: 900
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befe"),
+    book_id: 8,
+    btitle: 'gimmemore',
+    author: 'width',
+    price: 1300
+  },
+  {
+    _id: ObjectId("6416ac583aa02b518e08beff"),
+    book_id: 9,
+    btitle: 'badguy',
+    author: 'billie',
+    price: 1200
+  },
+  {
+    _id: ObjectId("6416ac583aa02b518e08bf00"),
+    book_id: 10,
+    btitle: 'memories',
+    author: 'Animals',
+    price: 1700
+  }
+]
+
+6. Write a MongoDB query to arrange the book name of the bookstore in ascending order along with all the columns. 
+
+ {
+    _id: ObjectId("6416aa993aa02b518e08bef5"),
+    book_id: 1,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    book_id: 1,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef8"),
+    book_id: 2,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416ab853aa02b518e08bef9"),
+    book_id: 3,
+    btitle: 'stay',
+    author: 'bieber',
+    price: 1000
+  },
+  {
+    _id: ObjectId("6416ab853aa02b518e08befa"),
+    book_id: 4,
+    btitle: 'as it was',
+    author: 'emilia',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befb"),
+    book_id: 5,
+    btitle: 'livitating',
+    author: 'dualipa',
+    price: 2000
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befc"),
+    book_id: 6,
+    btitle: 'smile',
+    author: 'XXX',
+    price: 1600
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befd"),
+    book_id: 7,
+    btitle: 'him & i',
+    author: 'ruth',
+    price: 900
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befe"),
+    book_id: 8,
+    btitle: 'gimmemore',
+    author: 'width',
+    price: 1300
+  }
+]
+
+7.Write a MongoDB query to arrange the book name of the bookstore in ascending order along with all the columns. 
+
+
+
+  {
+    _id: ObjectId("6416ab853aa02b518e08befa"),
+    book_id: 4,
+    btitle: 'as it was',
+    author: 'emilia',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416ac583aa02b518e08beff"),
+    book_id: 9,
+    btitle: 'badguy',
+    author: 'billie',
+    price: 1200
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befe"),
+    book_id: 8,
+    btitle: 'gimmemore',
+    author: 'width',
+    price: 1300
+  },
+  {
+    _id: ObjectId("6416ac2a3aa02b518e08befd"),
+    book_id: 7,
+    btitle: 'him & i',
+    author: 'ruth',
+    price: 900
+  },
+  {
+    _id: ObjectId("6416aa993aa02b518e08bef5"),
+    book_id: 1,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef8"),
+    book_id: 2,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befb"),
+    book_id: 5,
+    btitle: 'livitating',
+    author: 'dualipa',
+    price: 2000
+  },
+  {
+    _id: ObjectId("6416ac583aa02b518e08bf00"),
+    book_id: 10,
+    btitle: 'memories',
+    author: 'Animals',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    book_id: 1,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  }
+]
+
+8. Write a MongoDB query to know whether the author in the authors list.
+
+[
+  {
+    _id: ObjectId("6416aa993aa02b518e08bef5"),
+    book_id: 1,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef7"),
+    book_id: 1,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 1700
+  },
+  {
+    _id: ObjectId("6416ab063aa02b518e08bef8"),
+    book_id: 2,
+    btitle: 'hope',
+    author: 'XXX',
+    price: 1500
+  },
+  {
+    _id: ObjectId("6416abee3aa02b518e08befc"),
+    book_id: 6,
+    btitle: 'smile',
+    author: 'XXX',
+    price: 1600
+  }
+]
+
+9.Write a MongoDB query to update & increase the book price Rs.500 in all book name as "MongoDB Practice".
+
+db.books.update({"btitle":"XXX"},{"$inc":{"price":500}})
+
+10. Write a MongoDB query to use Update modifiers ($set, $push,  $pull,  $setOnInsert,$upsert) in bookstore.
+
+set>>>db.books.updateOne({"book_id":2},{$set:{"price":2500}})
+{
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 2500
+  },
+
+push>>db.books.updateOne({"book_id":2},{$push:{"bname":["bieber","mj"]}})
+
+ {
+    _id: ObjectId("6416aaab3aa02b518e08bef6"),
+    book_id: 2,
+    btitle: 'pain',
+    author: 'XXX',
+    price: 2500,
+    bname: [ [ 'bieber', 'mj' ] ]
+  },
+pull>>>db.books.updateOne({"book_id":2},{$pull:{"price":3000}})

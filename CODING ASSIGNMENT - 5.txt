@@ -1,0 +1,62 @@
+1) Consider the following relations for a boat management application for a beach resort:
+
+Choose appropriate foreign keys and other constraints
+
+SAILOR (SID,NAME,DOB,GENDER)
+
+* name column must have a value
+
+BOAT (BID,BTYPE,BNAME,COLOR)
+
+** Boat name must be unique
+
+BTYPE can take two values (D, S)
+
+D (Deluxe) S (Super Deluxe)
+
+SAILS (SID, BID, DOT, SHIFT)
+
+DOT (Date of Trip)
+
+SHIFT can take two values (FN or AN)
+
+
+Insert records into the above tables.
+
+Answers:
+
+
+mysql> select *from sailor;
++-----+----------+------------+--------+
+| sid | name     | dob        | gender |
++-----+----------+------------+--------+
+|   1 | santhosh | 2001-11-25 | male   |
+|   2 | sabari   | 2002-01-25 | male   |
+|   3 | tamil    | 2002-10-25 | male   |
+|   4 | bala     | 2002-04-09 | male   |
++-----+----------+------------+--------+
+
+2.
+
+mysql> select *from boat1;
++-----+-------+---------+-------+
+| bid | btype | bname   | color |
++-----+-------+---------+-------+
+|   1 | S     | 3Rwdj   | red   |
+|   2 | D     | 5Rwdj   | green |
+|   3 | S     | 5Rwotdj | green |
+|   4 | D     | 3Rwotdj | blue  |
++-----+-------+---------+-------+
+
+3.
+
+mysql> select *from sails3;
++------+------+------------+-------+
+| sid  | bid  | dot        | shift |
++------+------+------------+-------+
+|    1 |    2 | 2023-02-12 | an    |
+|    2 |    3 | 2023-02-14 | fn    |
+|    1 |    2 | 2023-02-15 | fn    |
+|    4 |    3 | 2023-02-17 | an    |
+|    3 |    4 | 2023-02-19 | fn    |
++------+------+------------+-------+

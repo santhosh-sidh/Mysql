@@ -1,0 +1,61 @@
+1.Create a student table to store name,age and score of students.
+
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(200) | YES  |     | NULL    |       |
+| age   | int          | YES  |     | NULL    |       |
+| score | int          | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+
+2.In a typical  e-commerce application,we need to store the following customer detail. Create a Customer table to store the data.
+
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| customer_id   | int          | YES  |     | NULL    |       |
+| first_name    | varchar(200) | YES  |     | NULL    |       |
+| last_name     | varchar(200) | YES  |     | NULL    |       |
+| date_of_birth | date         | YES  |     | NULL    |       |
+| address       | text         | YES  |     | NULL    |       |
+| phone_number  | int          | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+
+3.We need to store the details of orders in an e-commerce application.Create an order_details table to store the following details for every order.
+
++------------------+----------+------+-----+---------+-------+
+| Field            | Type     | Null | Key | Default | Extra |
++------------------+----------+------+-----+---------+-------+
+| order_id         | int      | YES  |     | NULL    |       |
+| customer_id      | int      | YES  |     | NULL    |       |
+| order_datetime   | datetime | YES  |     | NULL    |       |
+| shipped_datetime | datetime | YES  |     | NULL    |       |
+| total_amount     | float    | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+
+4.We're storing the details of players who are a part of tournament.The database contains a player table that stores the name, age and score of players.
+
++------+------+-------+
+| name | age  | score |
++------+------+-------+
+| ram  |   28 |    30 |
++------+------+-------+
+
+5.The database contains a player table that stores the name,age and score of players.
+
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| suresh |   21 |    70 |
+| venkat |   21 |    43 |
++--------+------+-------+
+6.Get all the details of "Suresh" from the player table in the following format.
+
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| suresh |   21 |    70 |
++--------+------+-------+
+
+
+

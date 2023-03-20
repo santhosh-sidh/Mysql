@@ -1,0 +1,170 @@
+1. Write a query to display the name,job.salary department name and department number for all employees.
+
+mysql> select empname,designation,basic_pay,deptno from emp_det ;
++----------+-------------+-----------+--------+
+| empname  | designation | basic_pay | deptno |
++----------+-------------+-----------+--------+
+| santhosh | developer   |  15600.00 |      1 |
+| sabari   | developer   |  16600.00 |      6 |
+| raja     | testing     |  16600.00 |      2 |
+| rakesh   | datanalyst  |  20000.00 |      3 |
+| sanjai   | datanalyst  |  30000.00 |      4 |
+| sarun    | datascience |  30000.00 |      5 |
+| samu     | datascience |  30000.00 |      7 |
+| lokesh   | HR          |  30000.00 |      8 |
+| dinesh   | testing     |  23000.00 |     10 |
+| bala     | developer   |  13000.00 |     11 |
++----------+-------------+-----------+--------+
+
+
+2. Display the jos available in DALLAS.
+
+
+3.Display the name,job,salary and the salary grade for each employee.
+mysql> select e.empname,e.designation,e.basic_pay,a.grade from emp_det as e inner join emp_per as a on e.empid=a.empid ;
++----------+-------------+-----------+-----------+
+| empname  | designation | basic_pay | grade     |
++----------+-------------+-----------+-----------+
+| santhosh | developer   |  15600.00 | excellent |
+| sabari   | developer   |  16600.00 | excellent |
+| raja     | testing     |  16600.00 | good      |
+| rakesh   | datanalyst  |  20000.00 | average   |
+| sanjai   | datanalyst  |  30000.00 | v.good    |
+| sarun    | datascience |  30000.00 | excellent |
+| samu     | datascience |  30000.00 | poor      |
+| lokesh   | HR          |  30000.00 | excellent |
+| dinesh   | testing     |  23000.00 | average   |
+| bala     | developer   |  13000.00 | good      |
++----------+-------------+-----------+-----------+
+
+4. Display the dept name and no. of employees working in each dept.
+
+
+mysql> select d.deptname, count(e.empname) from dept_det d left join emp_det e on d.deptno = e.deptno group by d.deptname;
++----------+------------------+
+| deptname | count(e.empname) |
++----------+------------------+
+| cds      |                1 |
+| mps      |                1 |
+| bpo      |                2 |
+| rr       |                1 |
+| pkc      |                1 |
+| mp       |                1 |
+| blade    |                1 |
+| pks      |                1 |
+| cd       |                1 |
+| cdb      |                1 |
++----------+------------------+
+
+5. Display the empno,name,dept name,loc,grade of all employees.
+
+mysql> select e.empid,e.empname,d.deptname,d.location,a.grade from emp_det e inner join dept_det d on e.deptno=d.deptno inner join emp_per a on e.empid=a.empid;
++-------+----------+----------+------------+-----------+
+| empid | empname  | deptname | location   | grade     |
++-------+----------+----------+------------+-----------+
+|     1 | santhosh | cds      | chennai    | excellent |
+|     2 | sabari   | mp       | kolkata    | excellent |
+|     3 | raja     | mps      | chennai    | good      |
+|     4 | rakesh   | bpo      | chennai    | average   |
+|     4 | rakesh   | bpo      | chennai    | average   |
+|     5 | sanjai   | rr       | coimbatore | v.good    |
+|     6 | sarun    | pkc      | bangalore  | excellent |
+|     7 | samu     | blade    | UP         | poor      |
+|     8 | lokesh   | pks      | mumbai     | excellent |
+|     9 | dinesh   | cd       | goa        | average   |
+|    10 | bala     | cdb      | manali     | good      |
++-------+----------+----------+------------+-----------+
+
+6. Display the empno,name,deptno and the dept name for all employees. Include the depts which is not having any employees.
+
+
+
+mysql> select e.empid,e.empname,d.deptno,d.deptname from emp_det e right join dept_det d on e.deptno = d.deptno;
++-------+----------+--------+----------+
+| empid | empname  | deptno | deptname |
++-------+----------+--------+----------+
+|     1 | santhosh |      1 | cds      |
+|     3 | raja     |      2 | mps      |
+|     4 | rakesh   |      3 | bpo      |
+|     4 | rakesh   |      3 | bpo      |
+|     5 | sanjai   |      4 | rr       |
+|     6 | sarun    |      5 | pkc      |
+|     2 | sabari   |      6 | mp       |
+|     7 | samu     |      7 | blade    |
+|     8 | lokesh   |      8 | pks      |
+|     9 | dinesh   |     10 | cd       |
+|    10 | bala     |     11 | cdb      |
++-------+----------+--------+----------+
+
+7. Display the deptno and dept name which is having no. employees.
+
+
+
+mysql> select e.deptno ,d.deptname from emp_det e left join dept_det d on e.deptno=d.deptno where empname='null' ;
++--------+----------+
+| deptno | deptname |
++--------+----------+
+|     12 | NULL     |
++--------+----------+
+
+8. Display the employee name and their manager's name for all employees.
+
+
+mysql> select empname,manager from emp_det;
++----------+---------+
+| empname  | manager |
++----------+---------+
+| santhosh | sakthi  |
+| sabari   | sakthi  |
+| raja     | sakthi  |
+| rakesh   | sakthi  |
+| sanjai   | sakthi  |
+| sarun    | sakthi  |
+| samu     | sakthi  |
+| lokesh   | sakthi  |
+| dinesh   | sakthi  |
+| bala     | sakthi  |
+| null     | sakthi  |
++----------+---------+
+
+9. Display the dept name which is having maximum employees.
+
+
+mysql> select d.deptname, count(*) from emp_det e inner join dept_det d on e.deptno=d.deptno group by d.deptname;
++----------+----------+
+| deptname | count(*) |
++----------+----------+
+| cds      |        1 |
+| mps      |        1 |
+| bpo      |        2 |
+| rr       |        1 |
+| pkc      |        1 |
+| mp       |        1 |
+| blade    |        1 |
+| pks      |        1 |
+| cd       |        1 |
+| cdb      |        1 |
++----------+----------+
+
+10.Write a query to find the empno, ename, job, deptno, dname and loc of all the employees. Include the departments which is having no employees and the employees who had not been allocated any dept.
+
+
+mysql> select e.empid,e.empname,e.deptno,d.deptname,d.location from emp_det e left join dept_det d on e.deptno=d.deptno;
++-------+----------+--------+----------+------------+
+| empid | empname  | deptno | deptname | location   |
++-------+----------+--------+----------+------------+
+|     1 | santhosh |      1 | cds      | chennai    |
+|     2 | sabari   |      6 | mp       | kolkata    |
+|     3 | raja     |      2 | mps      | chennai    |
+|     4 | rakesh   |      3 | bpo      | chennai    |
+|     4 | rakesh   |      3 | bpo      | chennai    |
+|     5 | sanjai   |      4 | rr       | coimbatore |
+|     6 | sarun    |      5 | pkc      | bangalore  |
+|     7 | samu     |      7 | blade    | UP         |
+|     8 | lokesh   |      8 | pks      | mumbai     |
+|     9 | dinesh   |     10 | cd       | goa        |
+|    10 | bala     |     11 | cdb      | manali     |
+|    12 | null     |     12 | NULL     | NULL       |
++-------+----------+--------+----------+------------+
+
+

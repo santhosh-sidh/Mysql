@@ -1,0 +1,83 @@
+                                        coding practice 2.0
+
+1.A new player has joined the tournament.write an sql query to add the following details to the player table.
+
++------+------+-------+
+| name | age  | score |
++------+------+-------+
+| Raj  |   26 |   120 |
++------+------+-------+
+
+2.Three new players have joined the tournament.Write the Sql query.
+
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
++--------+------+-------+
+
+3.Get the details of the players from the player table.
+
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
++--------+------+-------+
+
+4.Update the age of"Shyam" to 30 in the player table.
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Shyam  |   30 |   135 |
++--------+------+-------+
+
+5.Delete player "ravan" from the table.
+
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Shyam  |   30 |   135 |
++--------+------+-------+
+
+6.We have to store the Strike_rate of players in the database.Make necessary changes to the existing player table to store the data.
+
++--------+------+-------+-------------+
+| name   | age  | score | strike_rate |
++--------+------+-------+-------------+
+| Ram    |   28 |   125 |       123.4 |
+| Charan |   25 |   173 |       133.4 |
+| Ravan  |   27 |   155 |         176 |
++--------+------+-------+-------------+
+
+7.Get name and age of all the players from the player table.
+
++--------+------+
+| name   | age  |
++--------+------+
+| Ram    |   28 |
+| Charan |   25 |
+| Shyam  |   30 |
++--------+------+
+
+8.Rename the column name to Full_name in the player table.
+
++-----------+------+-------+-------------+
+| full_name | age  | score | strike_rate |
++-----------+------+-------+-------------+
+| Ram       |   28 |   125 |       123.4 |
+| Charan    |   25 |   173 |       133.4 |
+| Ravan     |   27 |   155 |         176 |
++-----------+------+-------+-------------+
+
+9.Delete player table from the database.
+
+mysql> desc player;
+ERROR 1146 (42S02): Table 'players.player' doesn't exist.

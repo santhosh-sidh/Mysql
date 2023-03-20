@@ -1,0 +1,234 @@
+
+1. Display the total number of employees working in the company
+
+mysql> select count(ename) from emp_details;
++--------------+
+| count(ename) |
++--------------+
+|           11 |
++--------------+
+
+
+2. Display the total salary and total commission to all employees
+
+mysql> select sum(salary),sum(commission)from emp_details;
++-------------+-----------------+
+| sum(salary) | sum(commission) |
++-------------+-----------------+
+|    61500.00 |            4400 |
++-------------+-----------------+
+
+3. Display the maximum salary from emp table.
+mysql> select max(salary) from emp_details;
++-------------+
+| max(salary) |
++-------------+
+|     9000.00 |
++-------------+
+
+4.Display the hiredate of junior most employee.
+
+mysql> select min(hired_date) from emp_details;
++-----------------+
+| min(hired_date) |
++-----------------+
+| 1981-02-28      |
++-----------------+
+
+5.Display the average salary from emp table.
+
+mysql> select avg(salary) from emp_details;
++-------------+
+| avg(salary) |
++-------------+
+| 5590.909091 |
++-------------+
+
+6.Display the maximum salary being paid to CLERK.
+
+
+mysql> select max(salary),job_role from emp_details group by job_role having job_role='clerk';
++-------------+----------+
+| max(salary) | job_role |
++-------------+----------+
+|     6000.00 | clerk    |
++-------------+----------+
+
+
+7.Display the maximum salary being paid in dept no 20.
+
+mysql> select max(salary),edeptno from emp_details group by edeptno having edeptno=20;
++-------------+---------+
+| max(salary) | edeptno |
++-------------+---------+
+|     8000.00 |      20 |
++-------------+---------+
+
+8.Display the minimum salary being paid to any SALESMAN.
+mysql> select min(salary),job_role from emp_details group by job_role having job_role='salesman';
++-------------+----------+
+| min(salary) | job_role |
++-------------+----------+
+|     2500.00 | salesman |
++-------------+----------+
+
+9.Display the average salary drawn by managers.
+
+mysql> select avg(salary),job_role from emp_details group by job_role having job_role='manager';
++-------------+----------+
+| avg(salary) | job_role |
++-------------+----------+
+| 6800.000000 | manager  |
++-------------+----------+
+
+10.Display the total salary drawn by analyst working in dept no 20.
+
+mysql> select sum(salary),job_role,edeptno from emp_details group by job_role,edeptno having job_role='analyst';
++-------------+----------+---------+
+| sum(salary) | job_role | edeptno |
++-------------+----------+---------+
+|    13000.00 | analyst  |      20 |
+|     3000.00 | analyst  |      23 |
++-------------+----------+---------+
+
+11. Display Department numbers and total number of employees working in each Department?
+mysql> select edeptno,count(ename) from emp_details group by edeptno;
++---------+--------------+
+| edeptno | count(ename) |
++---------+--------------+
+|      20 |            2 |
+|      21 |            1 |
+|      33 |            1 |
+|      22 |            1 |
+|      23 |            1 |
+|      10 |            1 |
+|      14 |            1 |
+|      25 |            1 |
+|      29 |            1 |
+|      17 |            1 |
+|      38 |            1 |
++---------+--------------+
+
+12. Display the various jobs and total number of employees working in each job group?
+mysql> select job_role,count(ename) from emp_details group by job_role;
++----------+--------------+
+| job_role | count(ename) |
++----------+--------------+
+| analyst  |            3 |
+| manager  |            5 |
+| salesman |            2 |
+| clerk    |            1 |
+| HR       |            1 |
++----------+--------------+
+
+13.Display department numbers and Total Salary for each Department?
+
+mysql> select edeptno,sum(salary)from emp_details group by edeptno;
++---------+-------------+
+| edeptno | sum(salary) |
++---------+-------------+
+|      20 |    13000.00 |
+|      21 |     8000.00 |
+|      33 |     5000.00 |
+|      22 |     6000.00 |
+|      23 |     3000.00 |
+|      10 |     9000.00 |
+|      14 |     2500.00 |
+|      25 |     9000.00 |
+|      29 |     2000.00 |
+|      17 |     3000.00 |
+|      38 |     6000.00 |
++---------+-------------+
+
+14.Display department numbers and Maximum Salary from each Department?
+
+mysql> select edeptno,max(salary)from emp_details group by edeptno;
++---------+-------------+
+| edeptno | max(salary) |
++---------+-------------+
+|      20 |     8000.00 |
+|      21 |     8000.00 |
+|      33 |     5000.00 |
+|      22 |     6000.00 |
+|      23 |     3000.00 |
+|      10 |     9000.00 |
+|      14 |     2500.00 |
+|      25 |     9000.00 |
+|      29 |     2000.00 |
+|      17 |     3000.00 |
+|      38 |     6000.00 |
++---------+-------------+
+
+15.Display various jobs and Total Salary for each job?
+
+mysql> select job_role,sum(salary)from emp_details group by job_role;
++----------+-------------+
+| job_role | sum(salary) |
++----------+-------------+
+| analyst  |    16000.00 |
+| manager  |    34000.00 |
+| salesman |     7500.00 |
+| clerk    |     6000.00 |
+| HR       |     3000.00 |
++----------+-------------+
+
+16.Display each job along with min of salary being paid in each job group?
+
+mysql> select job_role,min(salary)from emp_details group by job_role;
++----------+-------------+
+| job_role | min(salary) |
++----------+-------------+
+| analyst  |     3000.00 |
+| manager  |     2000.00 |
+| salesman |     2500.00 |
+| clerk    |     6000.00 |
+| HR       |     3000.00 |
++----------+-------------+
+
+17. Display the department Number with more than three employees in each department?
+
+mysql> select edeptno,count(job_role)=3 from emp_details group by edeptno;
++---------+-------------------+
+| edeptno | count(job_role)=3 |
++---------+-------------------+
+|      20 |                 1 |
+|      21 |                 0 |
+|      33 |                 0 |
+|      22 |                 0 |
+|      23 |                 0 |
+|      10 |                 0 |
+|      14 |                 0 |
+|      25 |                 0 |
+|      29 |                 0 |
+|      17 |                 0 |
+|      38 |                 0 |
++---------+------------------
+
+18. Display various jobs along with total salary for each of the job where total salary is greater than 2500?
+
+mysql> select job_role,count(salary) from emp_details group by job_role,salary having salary>2500 ;
++----------+---------------+
+| job_role | count(salary) |
++----------+---------------+
+| analyst  |             1 |
+| manager  |             1 |
+| salesman |             1 |
+| clerk    |             1 |
+| analyst  |             1 |
+| manager  |             2 |
+| HR       |             1 |
+| manager  |             1 |
+| analyst  |             2 |
++----------+---------------+
+
+19. Display the various jobs along with total number of employees in each job.The output should contain only those jobs with more than three employees?
+
+mysql> select job_role,count(*)as total_emp from emp_details group by job_role having total_emp>3 ;
++----------+-----------+
+| job_role | total_emp |
++----------+-----------+
+| analyst  |         5 |
+| manager  |         5 |
++----------+-----------+
+
+

@@ -1,0 +1,117 @@
+Q1 . Create a table with suitable constraints and fill the table with following dataset.
+
+mysql> desc tinfo;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| ID     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| Doj    | date        | YES  |     | NULL    |       |
+| Salary | int         | YES  |     | NULL    |       |
+| Gender | char(10)    | YES  |     | NULL    |       |
+| dept   | char(10)    | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+Q2. Write an SQL Query to select all the information of teachers in computer department.
+
+mysql> select * from tinfo;
++----+------------+------------+--------+--------+----------+
+| ID | Name       | Doj        | Salary | Gender | dept     |
++----+------------+------------+--------+--------+----------+
+|  1 | prabhu     | 2021-10-11 |  12000 | m      | computer |
+|  2 | mani       | 2021-07-18 |  13000 | m      | history  |
+|  3 | megala     | 2022-01-11 |  13000 | m      | biology  |
+|  4 | indhumathi | 2020-04-11 |   9000 | f      | maths    |
+|  5 | rajesh     | 2020-08-11 |  15000 | m      | physics  |
+|  6 | devi       | 2019-08-22 |  25000 | f      | polsci   |
+|  7 | padhma     | 2022-12-22 |  11000 | f      | commerce |
++----+------------+------------+--------+--------+----------+
+
+Q3. Write a query to list the name of female teachers in History department.
+
+mysql> select * from tinfo where gender='f'and dept='history';
++----+------+------------+--------+--------+---------+
+| ID | Name | Doj        | Salary | Gender | dept    |
++----+------+------------+--------+--------+---------+
+|  2 | mani | 2021-07-18 |  13000 | f      | history |
++----+------+------------+--------+--------+---------+
+
+Q4. list all names of teachers with date of admission in ascending order
+mysql> select name,doj from tinfo order by doj;
++------------+------------+
+| name       | doj        |
++------------+------------+
+| devi       | 2019-08-22 |
+| indhumathi | 2020-04-11 |
+| rajesh     | 2020-08-11 |
+| mani       | 2021-07-18 |
+| prabhu     | 2021-10-11 |
+| megala     | 2022-01-11 |
+| padhma     | 2022-12-22 |
++------------+------------+
+
+Q5. display Teacher’s name, Department, and Salary of male teacher.
+
+mysql> select name,dept,salary,gender from tinfo where gender='m';
++--------+----------+--------+--------+
+| name   | dept     | salary | gender |
++--------+----------+--------+--------+
+| prabhu | computer |  12000 | m      |
+| megala | biology  |  13000 | m      |
+| rajesh | physics  |  15000 | m      |
++--------+----------+--------+--------+
+
+Q6. To count the number of items whose salary is less than 10,000
+mysql> select count(salary) from tinfo where salary<10000 group by salary;
++---------------+
+| count(salary) |
++---------------+
+|             1 |
++---------------+
+
+Q7.  To insert a new record in the Teacher table with the following data: 8,”Mersha”,”computer”,{1/1/2000},12000,”m”
+
+mysql> insert into tinfo(id,name,doj,salary,gender,dept)values(8,'Mersha','2000-1-1',12000,'m','computer');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from tinfo;
++----+------------+------------+--------+--------+----------+
+| ID | Name       | Doj        | Salary | Gender | dept     |
++----+------------+------------+--------+--------+----------+
+|  1 | prabhu     | 2021-10-11 |  12000 | m      | computer |
+|  2 | mani       | 2021-07-18 |  13000 | f      | history  |
+|  3 | megala     | 2022-01-11 |  13000 | m      | biology  |
+|  4 | indhumathi | 2020-04-11 |   9000 | f      | maths    |
+|  5 | rajesh     | 2020-08-11 |  15000 | m      | physics  |
+|  6 | devi       | 2019-08-22 |  25000 | f      | polsci   |
+|  7 | padhma     | 2022-12-22 |  11000 | f      | commerce |
+|  8 | Mersha     | 2000-01-01 |  12000 | m      | computer |
++----+------------+------------+--------+--------+----------+
+
+Q8. List the teacher detail who is getting the minimum salary.
+
+mysql> select name,salary from tinfo t where salary= (select min(salary) from tinfo);
++------------+--------+
+| name       | salary |
++------------+--------+
+| indhumathi |   9000 |
++------------+--------+
+
+Q9.  List the teacher detail who is getting the second minimum salary.
+
+mysql> select * from tinfo t where 2 = (select count(salary) from tinfo where salary<=t.salary);
++----+--------+------------+--------+--------+----------+
+| ID | Name   | Doj        | Salary | Gender | dept     |
++----+--------+------------+--------+--------+----------+
+|  7 | padhma | 2022-12-22 |  11000 | f      | commerce |
++----+--------+------------+--------+--------+----------+
+
+Q10. List down the average salary of the teachers belongs to History department  
+
+mysql> select avg(salary) from tinfo where dept='history';
++-------------+
+| avg(salary) |
++-------------+
+|  13000.0000 |
++-------------+
+

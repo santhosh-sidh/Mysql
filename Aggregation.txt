@@ -1,0 +1,239 @@
+1.Display the list of employees who have joined the company before 30th june 80 or after 31 st dec 80.
+
+mysql> select * from emp_details where hired_date<1980-06-30 or hired_date>1980-12-31;
++------+--------+---------+----------+------------+--------+
+| Eid  | Ename  | EDeptno | Job_Role | Hired_date | salary |
++------+--------+---------+----------+------------+--------+
+|    1 | rakesh |      21 | Manager  | 1980-06-08 |   8000 |
+|    2 | ragu   |      33 | Salesman | 1985-07-22 |   5000 |
+|    3 | tamil  |      22 | clerk    | 1982-11-25 |   6000 |
+|    4 | bala   |      23 | analyst  | 1992-02-22 |   3000 |
+|    5 | nandhu |      10 | manager  | 1994-12-01 |   9000 |
+|    6 | lilly  |      14 | salesman | 1981-02-28 |   2500 |
++------+--------+---------+----------+------------+--------+
+
+2.Display the name of the current user.
+
+mysql> select current_user();
++----------------+
+| current_user() |
++----------------+
+| root@localhost |
++----------------+
+
+3.Display the names of employees working in department number 10 or 20 and working as clerks , salesman or analyst.
+
+mysql> select * from emp_details where edeptno=10 or edeptno=20 and job_role in('clerk','salesman','analyst');
++------+----------+---------+----------+------------+--------+
+| Eid  | Ename    | EDeptno | Job_Role | Hired_date | salary |
++------+----------+---------+----------+------------+--------+
+|    5 | nandhu   |      10 | manager  | 1994-12-01 |   9000 |
+|    7 | santhosh |      20 | analyst  | 1988-06-08 |   8000 |
++------+----------+---------+----------+------------+--------+
+
+4.Display the names of employees whose name starts with alphabet “S”.
+
+mysql> select * from emp_details where ename like 's%';
++------+----------+---------+----------+------------+--------+
+| Eid  | Ename    | EDeptno | Job_Role | Hired_date | salary |
++------+----------+---------+----------+------------+--------+
+|    7 | santhosh |      20 | analyst  | 1988-06-08 |   8000 |
++------+----------+---------+----------+------------+--------+
+
+5.Display employee name from employees whose name ends with alphabet N.
+
+
+mysql> select * from emp_details where ename like '%n';
++------+-------+---------+----------+------------+--------+
+| Eid  | Ename | EDeptno | Job_Role | Hired_date | salary |
++------+-------+---------+----------+------------+--------+
+|    8 | revan |      25 | Manager  | 1986-06-21 |   9000 |
++------+-------+---------+----------+------------+--------+
+
+16.Display the names of employees whose names have second alphabet A in their names.
+
+
+mysql> select * from emp_details where ename like '_a_%';
++------+----------+---------+----------+------------+--------+
+| Eid  | Ename    | EDeptno | Job_Role | Hired_date | salary |
++------+----------+---------+----------+------------+--------+
+|    1 | rakesh   |      21 | Manager  | 1980-06-08 |   8000 |
+|    2 | ragu     |      33 | Salesman | 1985-07-22 |   5000 |
+|    3 | tamil    |      22 | clerk    | 1982-11-25 |   6000 |
+|    4 | bala     |      23 | analyst  | 1992-02-22 |   3000 |
+|    5 | nandhu   |      10 | manager  | 1994-12-01 |   9000 |
+|    7 | santhosh |      20 | analyst  | 1988-06-08 |   8000 |
++------+----------+---------+----------+------------+--------+
+
+17.Display the names of all tables from the current user
+
+
+mysql> show tables;
++----------------------+
+| Tables_in_e_commerce |
++----------------------+
+| emp_details          |
+| shopping             |
++----------------------+
+
+18.Display the unique jobs in emp table.
+
+mysql> select distinct ename , job_role from emp_details;
++----------+----------+
+| ename    | job_role |
++----------+----------+
+| rakesh   | Manager  |
+| ragu     | Salesman |
+| tamil    | clerk    |
+| bala     | analyst  |
+| nandhu   | manager  |
+| lilly    | salesman |
+| santhosh | analyst  |
+| revan    | Manager  |
++----------+----------+
+
+9.Display the names of employees who are not working as SALESMAN or CLERK or ANALYST.
+
+mysql> select * from emp_details where job_role not in('Salesman','clerk','analyst');
++------+--------+---------+----------+------------+--------+
+| Eid  | Ename  | EDeptno | Job_Role | Hired_date | salary |
++------+--------+---------+----------+------------+--------+
+|    1 | rakesh |      21 | Manager  | 1980-06-08 |   8000 |
+|    5 | nandhu |      10 | manager  | 1994-12-01 |   9000 |
+|    8 | revan  |      25 | Manager  | 1986-06-21 |   9000 |
++------+--------+---------+----------+------------+--------+
+
+10.Display the names and salary of employees in descending order of salary.
+mysql> select ename,salary from emp_details order by salary desc;
++----------+--------+
+| ename    | salary |
++----------+--------+
+| nandhu   |   9000 |
+| revan    |   9000 |
+| rakesh   |   8000 |
+| santhosh |   8000 |
+| tamil    |   6000 |
+| ragu     |   5000 |
+| bala     |   3000 |
+| lilly    |   2500 |
++----------+--------+
+
+
+11.Display the names,job,salary and increased by 15% labbel the column new salary.
+
+mysql> select ename, salary ,(salary*15/100) as new_salary from emp_details;
++----------+---------+-------------+
+| ename    | salary  | new_salary  |
++----------+---------+-------------+
+| santhosh | 8000.00 | 1200.000000 |
+| rakesh   | 8000.00 | 1200.000000 |
+| ragu     | 5000.00 |  750.000000 |
+| tamil    | 6000.00 |  900.000000 |
+| bala     | 3000.00 |  450.000000 |
+| nandhu   | 9000.00 | 1350.000000 |
+| lilly    | 2500.00 |  375.000000 |
+| revan    | 9000.00 | 1350.000000 |
++----------+---------+-------------+
+
+
+12.Display the name of the employees whose name contains 'LL'.
+
+mysql> select * from emp_details where  ename like '%ll%';
++------+-------+---------+----------+------------+---------+
+| Eid  | Ename | Edeptno | Job_role | HIred_date | Salary  |
++------+-------+---------+----------+------------+---------+
+|    6 | lilly |      14 | salesman | 1981-02-28 | 2500.00 |
++------+-------+---------+----------+------------+---------+
+
+13..Display the name of the employees whose name contain 'A' as 4th character.
+
+mysql> select * from emp_details where  ename like '___a%';
++------+-------+---------+----------+------------+---------+
+| Eid  | Ename | Edeptno | Job_role | HIred_date | Salary  |
++------+-------+---------+----------+------------+---------+
+|    4 | bala  |      23 | analyst  | 1992-02-22 | 3000.00 |
+|    8 | revan |      25 | Manager  | 1986-06-21 | 9000.00 |
++------+-------+---------+----------+------------+---------+
+
+14.Display the name,job and salary of the employees whose salary is not in the range of 2000 and 3000.
+
+mysql> select ename,job_role,Salary from Emp_details where salary not in('2000','3000');
++----------+----------+---------+
+| ename    | job_role | Salary  |
++----------+----------+---------+
+| santhosh | analyst  | 8000.00 |
+| rakesh   | manager  | 8000.00 |
+| ragu     | salesman | 5000.00 |
+| tamil    | clerk    | 6000.00 |
+| nandhu   | manager  | 9000.00 |
+| lilly    | salesman | 2500.00 |
+| revan    | Manager  | 9000.00 |
++----------+----------+---------+
+
+15. Diplay the empno,job and hiredate of the employees who don't have MANAGER.
+
+
+mysql> select edeptno,job_role,hired_date from emp_details where job_role not in('manager');
++---------+----------+------------+
+| edeptno | job_role | hired_date |
++---------+----------+------------+
+|      20 | analyst  | 1988-06-08 |
+|      33 | salesman | 1985-07-22 |
+|      22 | clerk    | 1982-11-25 |
+|      23 | analyst  | 1992-02-22 |
+|      14 | salesman | 1981-02-28 |
+|      17 | HR       | 1988-03-21 |
++---------+----------+------------+
+
+
+16. Display the name and hiredate of the employees who have joined in the year '81'.
+
+
+mysql> select ename, hired_date from emp_details where year(hired_date) like'1981%';
++-------+------------+
+| ename | hired_date |
++-------+------------+
+| lilly | 1981-02-28 |
++-------+------------+
+
+17. Display the name and hiredate of the employees first half of year in '81'.
+
+mysql> select * from emp_details where hired_date between '1981-01-01' and '1981-07-01';
++------+-------+---------+----------+------------+---------+
+| Eid  | Ename | Edeptno | Job_role | HIred_date | Salary  |
++------+-------+---------+----------+------------+---------+
+|    6 | lilly |      14 | salesman | 1981-02-28 | 2500.00 |
++------+-------+---------+----------+------------+---------+
+
+
+18. Display the following output
+
+ename earns sal but wants three times salary
+
+Example : KING earns 5000 but wants 15000   
+
+
+
+mysql> select ename,salary,(salary*3) as expt_salary from emp_details where ename='santhosh';
++----------+---------+-------------+
+| ename    | salary  | expt_salary |
++----------+---------+-------------+
+| santhosh | 8000.00 |    24000.00 |
++----------+---------+-------------+
+
+19. Display the details of the employees who have joined in the month of 'MAY'
+
+
+mysql> select * from emp_details where hired_date like '%05%';
++------+--------+---------+----------+------------+---------+
+| Eid  | Ename  | Edeptno | Job_role | HIred_date | Salary  |
++------+--------+---------+----------+------------+---------+
+|   11 | dinesh |      38 | manager  | 1991-05-22 | 6000.00 |
++------+--------+---------+----------+------------+---------+
+
+
+
+
+
+
+

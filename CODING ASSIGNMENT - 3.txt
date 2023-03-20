@@ -1,0 +1,263 @@
+1) Create the following tables
+
+a) studentprofile(rollno,name,dob,department,city)
+mysql> desc studetiails;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | varchar(20) | NO   | PRI | NULL    |       |
+| name   | varchar(30) | YES  |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| dept   | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+b) marks (rollno,name,mark1,mark2)
+
+
+mysql> desc marks;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | varchar(20) | YES  |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| m1     | int         | YES  |     | NULL    |       |
+| m2     | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+
+2) insert 5 different records to the above tables.
+
+mysql> select * from studetiails;
++--------+----------+------------+-------+------------+
+| rollno | name     | dob        | dept  | city       |
++--------+----------+------------+-------+------------+
+| 1      | santhosh | 2001-11-25 | Bca   | Tirupur    |
+| 2      | samu     | 1999-07-24 | Bscit | sivagangai |
+| 3      | sanjai   | 2001-12-24 | Bscit | tirupur    |
+| 4      | sabari   | 2001-05-18 | ECE   | Madurai    |
+| 5      | sarun    | 2001-06-20 | Bscit | tirupur    |
+| 6      | tamil    | 2002-09-14 | EEE   | coimbatore |
+| 7      | bala     | 2002-04-14 | Mca   | tirupur    |
++--------+----------+------------+-------+------------+
+
+mysql> select * from marks;
++--------+----------+------+------+
+| rollno | name     | m1   | m2   |
++--------+----------+------+------+
+| 1      | santhosh |   80 |   85 |
+| 2      | samu     |   70 |   55 |
+| 3      | sanjai   |   80 |   45 |
+| 4      | sabari   |   30 |   55 |
+| 5      | sarun    |   60 |   55 |
+| 6      | tamil    |   45 |   25 |
+| 7      | bala     |   35 |   65 |
++--------+----------+------+------+
+
+3) add a column total to marks table.
+
+mysql> select * from marks;
++--------+----------+------+------+-------+
+| rollno | name     | m1   | m2   | total |
++--------+----------+------+------+-------+
+| 1      | santhosh |   80 |   85 |  NULL |
+| 2      | samu     |   70 |   55 |  NULL |
+| 3      | sanjai   |   80 |   45 |  NULL |
+| 4      | sabari   |   30 |   55 |  NULL |
+| 5      | sarun    |   60 |   55 |  NULL |
+| 6      | tamil    |   45 |   25 |  NULL |
+| 7      | bala     |   35 |   65 |  NULL |
++--------+----------+------+------+-------+
+
+4) change the column name dob to dateofbirth.
+
+mysql> select * from studetiails;
++--------+----------+-------------+-------+------------+
+| rollno | name     | dateofbirth | dept  | city       |
++--------+----------+-------------+-------+------------+
+| 1      | santhosh | 2001-11-25  | Bca   | Tirupur    |
+| 2      | samu     | 1999-07-24  | Bscit | sivagangai |
+| 3      | sanjai   | 2001-12-24  | Bscit | tirupur    |
+| 4      | sabari   | 2001-05-18  | ECE   | Madurai    |
+| 5      | sarun    | 2001-06-20  | Bscit | tirupur    |
+| 6      | tamil    | 2002-09-14  | EEE   | coimbatore |
+| 7      | bala     | 2002-04-14  | Mca   | tirupur    |
++--------+----------+-------------+-------+------------+
+
+5) display the structure of the above tables.
+mysql> desc studetiails;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | varchar(20) | NO   | PRI | NULL    |       |
+| name   | varchar(30) | YES  |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| dept   | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+mysql> desc marks;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | varchar(20) | YES  |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| m1     | int         | YES  |     | NULL    |       |
+| m2     | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+
+6) List the tables which you have created.
+
+mysql> select * from studetiails;
++--------+----------+-------------+-------+------------+
+| rollno | name     | dateofbirth | dept  | city       |
++--------+----------+-------------+-------+------------+
+| 1      | santhosh | 2001-11-25  | Bca   | Tirupur    |
+| 2      | samu     | 1999-07-24  | Bscit | sivagangai |
+| 3      | sanjai   | 2001-12-24  | Bscit | tirupur    |
+| 4      | sabari   | 2001-05-18  | ECE   | Madurai    |
+| 5      | sarun    | 2001-06-20  | Bscit | tirupur    |
+| 6      | tamil    | 2002-09-14  | EEE   | coimbatore |
+| 7      | bala     | 2002-04-14  | Mca   | tirupur    |
++--------+----------+-------------+-------+------------+
+
+
+mysql> select * from marks;
++--------+----------+------+------+-------+
+| rollno | name     | m1   | m2   | total |
++--------+----------+------+------+-------+
+| 1      | santhosh |   80 |   85 |  NULL |
+| 2      | samu     |   70 |   55 |  NULL |
+| 3      | sanjai   |   80 |   45 |  NULL |
+| 4      | sabari   |   30 |   55 |  NULL |
+| 5      | sarun    |   60 |   55 |  NULL |
+| 6      | tamil    |   45 |   25 |  NULL |
+| 7      | bala     |   35 |   65 |  NULL |
++--------+----------+------+------+-------+
+
+7) Calculate total marks for each student and update in marks table.
+
+mysql> select * from marks;
++--------+----------+------+------+-------+---------+-------+
+| rollno | name     | m1   | m2   | total | average | grade |
++--------+----------+------+------+-------+---------+-------+
+| 1      | santhosh |   80 |   85 |   165 |   82.50 | NULL  |
+| 2      | samu     |   70 |   55 |   125 |   62.50 | NULL  |
+| 3      | sanjai   |   80 |   45 |   125 |   62.50 | NULL  |
+| 5      | sarun    |   60 |   55 |   115 |   57.50 | NULL  |
+| 6      | tamil    |   45 |   25 |    70 |   35.00 | NULL  |
+| 7      | bala     |   35 |   65 |   100 |   50.00 | NULL  |
++--------+----------+------+------+-------+---------+-------+
+
+8) remove the 4 th rollno from studentprofile  table.
+
+mysql> select * from marks;
++--------+----------+------+------+-------+
+| rollno | name     | m1   | m2   | total |
++--------+----------+------+------+-------+
+| 1      | santhosh |   80 |   85 |  NULL |
+| 2      | samu     |   70 |   55 |  NULL |
+| 3      | sanjai   |   80 |   45 |  NULL |
+| 5      | sarun    |   60 |   55 |  NULL |
+| 6      | tamil    |   45 |   25 |  NULL |
+| 7      | bala     |   35 |   65 |  NULL |
++--------+----------+------+------+-------+
+
+9) Display all the records of both the tables.
+10) save your changes.
+
+mysql> select s.*,m.* from studetiails as s right join marks as m on s.rollno=m.rollno;
++--------+----------+-------------+-------+------------+--------+----------+------+------+-------+
+| rollno | name     | dateofbirth | dept  | city       | rollno | name     | m1   | m2   | total |
++--------+----------+-------------+-------+------------+--------+----------+------+------+-------+
+| 1      | santhosh | 2001-11-25  | Bca   | Tirupur    | 1      | santhosh |   80 |   85 |  NULL |
+| 2      | samu     | 1999-07-24  | Bscit | sivagangai | 2      | samu     |   70 |   55 |  NULL |
+| 3      | sanjai   | 2001-12-24  | Bscit | tirupur    | 3      | sanjai   |   80 |   45 |  NULL |
+| 5      | sarun    | 2001-06-20  | Bscit | tirupur    | 5      | sarun    |   60 |   55 |  NULL |
+| 6      | tamil    | 2002-09-14  | EEE   | coimbatore | 6      | tamil    |   45 |   25 |  NULL |
+| 7      | bala     | 2002-04-14  | Mca   | tirupur    | 7      | bala     |   35 |   65 |  NULL |
++--------+----------+-------------+-------+------------+--------+----------+------+------+-------+
+
+11) add two more columns average and grade
+
+
+mysql> select * from marks;
++--------+----------+------+------+-------+---------+-------+
+| rollno | name     | m1   | m2   | total | average | grade |
++--------+----------+------+------+-------+---------+-------+
+| 1      | santhosh |   80 |   85 |  NULL |    NULL | NULL  |
+| 2      | samu     |   70 |   55 |  NULL |    NULL | NULL  |
+| 3      | sanjai   |   80 |   45 |  NULL |    NULL | NULL  |
+| 5      | sarun    |   60 |   55 |  NULL |    NULL | NULL  |
+| 6      | tamil    |   45 |   25 |  NULL |    NULL | NULL  |
+| 7      | bala     |   35 |   65 |  NULL |    NULL | NULL  |
++--------+----------+------+------+-------+---------+-------+
+
+
+12) calculate the average for all the students.
+
+
+mysql> select * from marks;
++--------+----------+------+------+-------+---------+-------+
+| rollno | name     | m1   | m2   | total | average | grade |
++--------+----------+------+------+-------+---------+-------+
+| 1      | santhosh |   80 |   85 |  NULL |   82.50 | NULL  |
+| 2      | samu     |   70 |   55 |  NULL |   62.50 | NULL  |
+| 3      | sanjai   |   80 |   45 |  NULL |   62.50 | NULL  |
+| 5      | sarun    |   60 |   55 |  NULL |   57.50 | NULL  |
+| 6      | tamil    |   45 |   25 |  NULL |   35.00 | NULL  |
+| 7      | bala     |   35 |   65 |  NULL |   50.00 | NULL  |
++--------+----------+------+------+-------+---------+-------+
+13) Calculate the grade (if both the marks are  above 40 then grade should be pass if less than 40 grade should be fail).
+
+mysql> select * from marks;
++--------+----------+------+------+-------+---------+-------+
+| rollno | name     | m1   | m2   | total | average | grade |
++--------+----------+------+------+-------+---------+-------+
+| 1      | santhosh |   80 |   85 |   165 |   82.50 | p     |
+| 2      | samu     |   70 |   55 |   125 |   62.50 | p     |
+| 3      | sanjai   |   80 |   45 |   125 |   62.50 | p     |
+| 5      | sarun    |   60 |   55 |   115 |   57.50 | p     |
+| 6      | tamil    |   45 |   25 |    70 |   35.00 | p     |
+| 7      | bala     |   35 |   65 |   100 |   50.00 | p     |
++--------+----------+------+------+-------+---------+-------+
+
+14) Remove the column average .
+
+
+mysql> select * from marks;
++--------+----------+------+------+-------+-------+
+| rollno | name     | m1   | m2   | total | grade |
++--------+----------+------+------+-------+-------+
+| 1      | santhosh |   80 |   85 |   165 | p     |
+| 2      | samu     |   70 |   55 |   125 | p     |
+| 3      | sanjai   |   80 |   45 |   125 | p     |
+| 5      | sarun    |   60 |   55 |   115 | p     |
+| 6      | tamil    |   45 |   25 |    70 | p     |
+| 7      | bala     |   35 |   65 |   100 | p     |
++--------+----------+------+------+-------+-------+
+
+15) Remove all the records from the table.
+
+mysql> delete from marks;
+Query OK, 6 rows affected (0.11 sec)
+
+mysql> select * from marks;
+Empty set (0.00 sec)
+16) confirm your changes
+
+
+mysql> desc marks;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | varchar(20) | YES  |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| m1     | int         | YES  |     | NULL    |       |
+| m2     | int         | YES  |     | NULL    |       |
+| total  | int         | YES  |     | NULL    |       |
+| grade  | char(1)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+
